@@ -7,10 +7,13 @@ import java.util.Random;
 public class BalancedBracketsApplication {
 
 	public static void main(String[] args) {
-		List<String> bracketArray = new ArrayList<>();
-		for(int i = 0; i<10; i++) {
-			bracketArray.add(bracketBuilder(0, true));
-			System.out.println(" is balanced");
+		Random rnd = new Random();
+		for(int i = 0; i<20; i++) {
+			String bracket = bracketBuilder(0, rnd.nextBoolean());
+			if(isBalanced(bracket))
+				System.out.println(bracket + " is balanced");
+			else 
+				System.out.println(bracket + " is NOT balanced");
 		}
 		
 
@@ -71,10 +74,30 @@ public class BalancedBracketsApplication {
 			int last = bracketStack.size() - 1;
 			if(bracket.equals("[") || bracket.equals("{") || bracket.equals("("))
 				bracketStack.add(bracket);
-			else if(bracket.equals("]") || bracket.equals("}") || bracket.equals(")")) {
+			else if( bracketStack.size()>0 && (bracket.equals("]") || bracket.equals("}") || bracket.equals(")"))) {
 				char c = bracket.charAt(0);
+				switch(c) {
+				case ']':
+					if(bracketStack.get(last).equals("["))
+						bracketStack.remove(last);
+					else return false;
+					break;
+				case '}':
+					if(bracketStack.get(last).equals("{"))
+						bracketStack.remove(last);
+					else return false;
+					break;
+				case ')':
+					if(bracketStack.get(last).equals("("))
+						bracketStack.remove(last);
+					else return false;
+					break;
+				} // End of switch(c)
 			} // End of else if(bracket.equals("]") || ....)
+					else return false;
+			i++;
 		} // End of while(string.length()>i)
-		return true;
+		if(bracketStack.size() == 0) return true;
+		else return false;
 	}
 }
