@@ -9,9 +9,12 @@ For example, if the input is “{[(])}”, the pair of square brackets, “[]”
 round bracket, "(". Similarly, the pair of round brackets, "()", encloses a single unbalanced closing 
 square bracket, "]". Thus, the input string "{[(])}" is unbalanced.
 
-Therefore, a string containing bracket characters is said to be balanced if:\n
-1- A matching opening bracket occurs to the left of each corresponding closing bracket
-2 - Brackets enclosed within balanced brackets are also balanced
-It does not contain any non-bracket characters
+Therefore, a string containing bracket characters is said to be balanced if:  
+1 - A matching opening bracket occurs to the left of each corresponding closing bracket  
+
+2 - Brackets enclosed within balanced brackets are also balanced  
+
+3 - It does not contain any non-bracket characters  
+
 There are a couple of special cases to keep in mind: null is considered to be unbalanced, while the empty string is considered to be balanced.
 
