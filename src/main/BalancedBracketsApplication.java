@@ -8,7 +8,7 @@ public class BalancedBracketsApplication {
 
 	public static void main(String[] args) {
 		Random rnd = new Random();
-		for(int i = 0; i<20; i++) {
+		for(int i = 0; i<30; i++) {
 			String bracket = bracketBuilder(0, rnd.nextBoolean());
 			if(isBalanced(bracket))
 				System.out.println(bracket + " is balanced");
@@ -61,7 +61,7 @@ public class BalancedBracketsApplication {
 		} // End of for(int i=0; i<length; i++)
 		if(isBalanced)
 			return builder.toString();
-		else return builder.append("]{[(").toString();
+		else return builder.append("[{[(A)]}]").toString();
 	} // End of bracketBuilder(...)
 
 	private static boolean isBalanced(String string) {
